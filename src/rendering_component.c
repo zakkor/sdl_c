@@ -1,20 +1,20 @@
 #include "rendering_component.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <SDL2/SDL_image.h>
 
 rendering_component * rc_init(const char *image_path, SDL_Renderer *ren)
 {
     rendering_component * rc = malloc(sizeof(rendering_component));
     
-    SDL_Surface *bmp = SDL_LoadBMP(image_path);
-    if (bmp == NULL)
+    SDL_Surface *img = IMG_Load(image_path);
+    if (img == NULL)
     {
 	return NULL;
     }
     
-    rc->tex = SDL_CreateTextureFromSurface(ren, bmp);
-    
-    SDL_FreeSurface(bmp);
+    rc->tex = SDL_CreateTextureFromSurface(ren, img);
+    SDL_FreeSurface(img);
 
     rc->ren = ren;
     return rc;

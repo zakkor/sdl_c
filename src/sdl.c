@@ -1,6 +1,7 @@
 #include <stdbool.h>
 
 #include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
 #include "actor.h"
 
 int main(void)
@@ -27,10 +28,10 @@ int main(void)
 	return EXIT_FAILURE;
     }
 
-    actor *player = actor_init("res/image.bmp", ren);
+    actor *player = actor_init("res/lena.png", ren);
     if (player == NULL)
     {
-	printf("SDL_LoadBMP error: %s\n", SDL_GetError());
+	printf("IMG_Load error: %s\n", IMG_GetError());
 	SDL_DestroyWindow(win);
 	SDL_DestroyRenderer(ren);
 	SDL_Quit();
