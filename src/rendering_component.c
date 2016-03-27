@@ -7,6 +7,10 @@ rendering_component * rc_init(const char *image_path, SDL_Renderer *ren)
     rendering_component * rc = malloc(sizeof(rendering_component));
     
     SDL_Surface *bmp = SDL_LoadBMP(image_path);
+    if (bmp == NULL)
+    {
+	return NULL;
+    }
     
     rc->tex = SDL_CreateTextureFromSurface(ren, bmp);
     

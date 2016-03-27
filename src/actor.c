@@ -5,6 +5,10 @@ actor * actor_init(const char *image_path, SDL_Renderer *ren)
 {
     actor * act = malloc(sizeof(actor));
     act->rc = rc_init(image_path, ren);
+    if (act->rc == NULL)
+    {
+	return NULL;
+    }
     return act;
 }
 
